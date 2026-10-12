@@ -1,149 +1,197 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Usia</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator Usia</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #eaf7fc;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            padding: 20px;
-        }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #dbeafe, #f5d0fe);
+      color: #1f2937;
+    }
 
-        .card {
-            background-color: white;
-            width: 100%;
-            max-width: 600px;
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
+    .container {
+      width: 100%;
+      max-width: 420px;
+      padding: 30px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+    }
 
-        h1 {
-            text-align: center;
-            color: #2878c8;
-            font-size: 32px;
-            margin-bottom: 45px;
-        }
+    h1 {
+      margin-top: 0;
+      text-align: center;
+      font-size: 26px;
+    }
 
-        label {
-            display: block;
-            font-weight: bold;
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
+    .description {
+      color: #6b7280;
+      text-align: center;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
 
-        input[type="date"] {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-            font-size: 18px;
-            margin-bottom: 25px;
-        }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
 
-        #hasilUsia {
-            background-color: #eaf6fc;
-            color: #426783;
-            padding: 22px;
-            border-radius: 15px;
-            font-size: 20px;
-            line-height: 1.8;
-            min-height: 70px;
-        }
+    input[type="date"] {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
 
-        @media (max-width: 480px) {
-            .card {
-                padding: 25px;
-                border-radius: 25px;
-            }
+    input[type="date"]:focus {
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px #e0e7ff;
+    }
 
-            h1 {
-                font-size: 27px;
-                margin-bottom: 35px;
-            }
+    #hasil {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 12px;
+      background: #eef2ff;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
 
-            label {
-                font-size: 18px;
-            }
+    #hasil strong {
+      color: #4338ca;
+    }
 
-            input[type="date"],
-            #hasilUsia {
-                font-size: 16px;
-            }
-        }
-    </style>
+    .footer {
+      text-align: center;
+      color: #9ca3af;
+      font-size: 12px;
+      margin-top: 22px;
+    }
+  </style>
 </head>
 
 <body>
+  <main class="container">
+    <h1>Kalkulator Usia 🎂</h1>
 
-    <div class="card">
-        <h1>Kalkulator Usia</h1>
+    <p class="description">
+      Cari tahu berapa usia kamu hari ini!
+    </p>
 
-        <label for="tanggalLahir">
-            Tanggal lahir kamu:
-        </label>
+    <label for="tanggalLahir">
+      Tanggal lahir kamu:
+    </label>
 
-        <input type="date" id="tanggalLahir"
-               value="2007-08-25">
+    <input
+      type="date"
+      id="tanggalLahir"
+      value="2008-03-12"
+      required
+    >
 
-        <p id="hasilUsia"></p>
-    </div>
+    <p id="hasil" aria-live="polite">
+      Menghitung usia...
+    </p>
 
-    <script>
-        const inputTanggal = document.getElementById("tanggalLahir");
-        const hasilUsia = document.getElementById("hasilUsia");
+    <p class="footer">
+      Dibuat dengan HTML, CSS, dan JavaScript
+    </p>
+  </main>
 
-        function hitungUsia() {
-            if (!inputTanggal.value) {
-                hasilUsia.textContent = "";
-                return;
-            }
+  <script>
+    const input = document.getElementById("tanggalLahir");
+    const hasil = document.getElementById("hasil");
 
-            const lahir = new Date(inputTanggal.value + "T00:00:00");
-            const sekarang = new Date();
+    function formatTanggal(date) {
+      const tahun = date.getFullYear();
+      const bulan = String(date.getMonth() + 1).padStart(2, "0");
+      const hari = String(date.getDate()).padStart(2, "0");
 
-            if (lahir > sekarang) {
-                hasilUsia.textContent = "Tanggal lahir tidak valid.";
-                return;
-            }
+      return `${tahun}-${bulan}-${hari}`;
+    }
 
-            let tahun = sekarang.getFullYear() - lahir.getFullYear();
-            let bulan = sekarang.getMonth() - lahir.getMonth();
-            let hari = sekarang.getDate() - lahir.getDate();
+    function hitungUsia() {
+      const nilai = input.value;
 
-            if (hari < 0) {
-                bulan--;
-                hari += new Date(
-                    sekarang.getFullYear(),
-                    sekarang.getMonth(),
-                    0
-                ).getDate();
-            }
+      // Gunakan tanggal lokal agar tidak bergeser karena zona waktu.
+      const hariIni = new Date();
+      hariIni.setHours(0, 0, 0, 0);
 
-            if (bulan < 0) {
-                tahun--;
-                bulan += 12;
-            }
+      input.max = formatTanggal(hariIni);
 
-            hasilUsia.textContent =
-                Kamu sudah berusia ${tahun} tahun ${bulan} bulan ${hari} hari.;
-        }
+      if (!nilai) {
+        hasil.textContent = "Silakan pilih tanggal lahir kamu.";
+        return;
+      }
 
-        inputTanggal.addEventListener("input", hitungUsia);
-        hitungUsia();
-    </script>
+      const [tahun, bulan, hari] = nilai.split("-").map(Number);
+      const lahir = new Date(tahun, bulan - 1, hari);
 
+      // Pastikan tanggal benar-benar valid.
+      if (
+        lahir.getFullYear() !== tahun ||
+        lahir.getMonth() !== bulan - 1 ||
+        lahir.getDate() !== hari
+      ) {
+        hasil.textContent = "Tanggal lahir tidak valid.";
+        return;
+      }
+
+      if (lahir > hariIni) {
+        hasil.textContent = "Tanggal lahir tidak boleh di masa depan.";
+        return;
+      }
+
+      let tahunUsia = hariIni.getFullYear() - tahun;
+      let bulanUsia = hariIni.getMonth() - (bulan - 1);
+      let hariUsia = hariIni.getDate() - hari;
+
+      if (hariUsia < 0) {
+        bulanUsia--;
+        const jumlahHariBulanLalu = new Date(
+          hariIni.getFullYear(),
+          hariIni.getMonth(),
+          0
+        ).getDate();
+
+        hariUsia += jumlahHariBulanLalu;
+      }
+
+      if (bulanUsia < 0) {
+        tahunUsia--;
+        bulanUsia += 12;
+      }
+
+      hasil.replaceChildren();
+
+      const paragraf = document.createElement("span");
+      paragraf.textContent =
+        `Kamu sudah berusia ${tahunUsia} tahun ` +
+        `${bulanUsia} bulan ${hariUsia} hari.`;
+
+      hasil.appendChild(paragraf);
+    }
+
+    input.addEventListener("input", hitungUsia);
+
+    hitungUsia();
+  </script>
 </body>
 </html>
