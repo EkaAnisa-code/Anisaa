@@ -10,7 +10,7 @@
 
     <style>
         body {
-            background-color: #0d6efd;
+            background-color: #f0f2f5;
         }
 
         .kalkulator {
@@ -18,25 +18,53 @@
             margin: 80px auto;
             padding: 30px;
             background-color: #0d6efd;
-            border: 2px solid white;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .kalkulator h2 {
+            background-color: #0d6efd;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .kalkulator label,
+        .kalkulator h5 {
             color: white;
         }
 
-        .kalkulator h2,
-        .kalkulator h5,
-        .kalkulator label {
-            color: white;
+        .form-control,
+        .form-select {
+            background-color: white;
+            color: black;
         }
 
         #hasil {
+            background-color: black;
+            color: white;
             font-size: 35px;
             font-weight: bold;
-            color: white;
             text-align: center;
-            margin-top: 20px;
-            min-height: 50px;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            min-height: 70px;
+        }
+
+        .btn-hitung {
+            background-color: #0d6efd;
+            color: white;
+            border: 2px solid white;
+            font-weight: bold;
+        }
+
+        .btn-hitung:hover {
+            background-color: #0b5ed7;
+            color: white;
         }
     </style>
 </head>
@@ -46,7 +74,7 @@
     <div class="container">
         <div class="kalkulator">
 
-            <h2 class="text-center mb-4">
+            <h2 class="mb-4">
                 Kalkulator Aritmatika Eka Anisa - NIM 262302018
             </h2>
 
@@ -78,7 +106,7 @@
             </div>
 
             <!-- Tombol Hitung -->
-            <button onclick="hitung()" class="btn btn-light w-100">
+            <button onclick="hitung()" class="btn btn-hitung w-100">
                 Hitung
             </button>
 
@@ -142,4 +170,5 @@
 
 </body>
 </html>
+
 
