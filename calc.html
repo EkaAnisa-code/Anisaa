@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -11,15 +12,16 @@
     <style>
         body {
             background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
         }
 
         .kalkulator {
-            max-width: 500px;
+            max-width: 430px;
             margin: 80px auto;
             background-color: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .judul {
@@ -27,8 +29,14 @@
             color: white;
             text-align: center;
             padding: 20px 15px;
-            font-size: 22px;
+            font-size: 21px;
             font-weight: bold;
+        }
+
+        .identitas {
+            font-size: 12px;
+            font-weight: normal;
+            margin-top: 5px;
         }
 
         .isi-kalkulator {
@@ -36,21 +44,27 @@
             background-color: white;
         }
 
-        .form-label,
-        h5 {
+        .form-label {
             color: black;
+            font-weight: 500;
         }
 
         .form-control,
         .form-select {
             background-color: white;
             color: black;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 7px;
         }
 
         .btn-hitung {
             background-color: #0d6efd;
             color: white;
             font-weight: bold;
+            padding: 11px;
+            border-radius: 7px;
+            border: none;
         }
 
         .btn-hitung:hover {
@@ -66,7 +80,14 @@
             text-align: center;
             padding: 15px;
             border-radius: 10px;
-            min-height: 70px;
+            min-height: 100px;
+        }
+
+        #hasil h5 {
+            color: white;
+            font-size: 16px;
+            font-weight: normal;
+            margin-bottom: 12px;
         }
     </style>
 </head>
@@ -76,23 +97,26 @@
     <div class="container">
         <div class="kalkulator">
 
-            <!-- Judul Biru -->
             <div class="judul">
-                Kalkulator Aritmatika Eka Anisa - NIM 262302018
+                Kalkulator Aritmatika
+                <div class="identitas">
+                    Eka Anisa - NIM. 262302018
+                </div>
             </div>
 
-            <!-- Isi Kalkulator Putih -->
             <div class="isi-kalkulator">
 
                 <div class="mb-3">
                     <label class="form-label">Angka Pertama</label>
-                    <input type="number" id="angka1" class="form-control"
+                    <input type="number" id="angka1"
+                        class="form-control"
                         placeholder="Masukkan angka pertama">
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Angka Kedua</label>
-                    <input type="number" id="angka2" class="form-control"
+                    <input type="number" id="angka2"
+                        class="form-control"
                         placeholder="Masukkan angka kedua">
                 </div>
 
@@ -108,22 +132,19 @@
                     </select>
                 </div>
 
-                <!-- Tombol Hitung -->
                 <button onclick="hitung()" class="btn btn-hitung w-100">
                     Hitung
                 </button>
 
-                <!-- Hasil Menyatu dalam Kotak Hitam -->
                 <div id="hasil" class="mt-4">
-                    <h5 style="color:white;">Hasil Perhitungan:</h5>
-                    0
+                    <h5>Hasil Perhitungan:</h5>
+                    <div id="angkaHasil">0</div>
                 </div>
 
             </div>
         </div>
     </div>
 
-    <!-- JavaScript -->
     <script>
         function hitung() {
             let angka1 = document.getElementById("angka1").value;
@@ -133,8 +154,8 @@
             let hasil;
 
             if (angka1 === "" || angka2 === "") {
-                document.getElementById("hasil").innerHTML =
-                    '<h5 style="color:white;">Hasil Perhitungan:</h5>Masukkan kedua angka!';
+                document.getElementById("angkaHasil").innerHTML =
+                    "Masukkan kedua angka!";
                 return;
             }
 
@@ -145,30 +166,39 @@
                 case "+":
                     hasil = angka1 + angka2;
                     break;
+
                 case "-":
                     hasil = angka1 - angka2;
                     break;
+
                 case "*":
                     hasil = angka1 * angka2;
                     break;
+
                 case "/":
-                    hasil = angka2 === 0 ? "Tidak bisa dibagi 0" : angka1 / angka2;
+                    hasil = angka2 === 0
+                        ? "Tidak bisa dibagi 0"
+                        : angka1 / angka2;
                     break;
+
                 case "%":
-                    hasil = angka2 === 0 ? "Tidak bisa modulus 0" : angka1 % angka2;
+                    hasil = angka2 === 0
+                        ? "Tidak bisa modulus 0"
+                        : angka1 % angka2;
                     break;
+
                 case "**":
                     hasil = angka1 ** angka2;
                     break;
             }
 
-            document.getElementById("hasil").innerHTML =
-                '<h5 style="color:white;">Hasil Perhitungan:</h5>' + hasil;
+            document.getElementById("angkaHasil").innerHTML = hasil;
         }
     </script>
 
 </body>
 </html>
+
 
 
 
