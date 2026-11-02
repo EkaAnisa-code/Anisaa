@@ -1,32 +1,39 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Sederhana</title>
+    <title>Kalkulator Aritmatika Eka Anisa</title>
 
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         body {
-            background-color: #f0f2f5;
+            background-color: #0d6efd;
         }
 
         .kalkulator {
-            max-width: 450px;
+            max-width: 500px;
             margin: 80px auto;
             padding: 30px;
-            background: white;
+            background-color: #0d6efd;
+            border: 2px solid white;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            color: white;
+        }
+
+        .kalkulator h2,
+        .kalkulator h5,
+        .kalkulator label {
+            color: white;
         }
 
         #hasil {
             font-size: 35px;
             font-weight: bold;
-            color: #0d6efd;
+            color: white;
             text-align: center;
             margin-top: 20px;
             min-height: 50px;
@@ -39,7 +46,9 @@
     <div class="container">
         <div class="kalkulator">
 
-            <h2 class="text-center mb-4">Kalkulator</h2>
+            <h2 class="text-center mb-4">
+                Kalkulator Aritmatika Eka Anisa - NIM 262302018
+            </h2>
 
             <!-- Input Angka Pertama -->
             <div class="mb-3">
@@ -69,12 +78,15 @@
             </div>
 
             <!-- Tombol Hitung -->
-            <button onclick="hitung()" class="btn btn-primary w-100">
+            <button onclick="hitung()" class="btn btn-light w-100">
                 Hitung
             </button>
 
             <!-- Layar Hasil -->
-            <h5 class="text-center mt-4">Hasil Perhitungan:</h5>
+            <h5 class="text-center mt-4">
+                Hasil Perhitungan:
+            </h5>
+
             <div id="hasil">0</div>
 
         </div>
