@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scientific Calculator Pro - Eka Anisa</title>
+<title>Scientific Calculator - Eka Anisa</title>
 
 <style>
 * {
@@ -15,452 +15,367 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #eef2f7;
-    color: #202938;
-    padding: 25px 14px;
+    background: #f8f9fa;
+    color: #202124;
+    min-height: 100vh;
+    padding: 25px 15px;
 }
 
 .container {
-    max-width: 1050px;
+    max-width: 850px;
     margin: auto;
 }
 
 .header {
+    text-align: center;
     margin-bottom: 22px;
 }
 
 .header h1 {
     font-size: 27px;
-    margin-bottom: 7px;
+    margin-bottom: 9px;
+    color: #202124;
 }
 
 .header p {
-    color: #64748b;
+    color: #5f6368;
     font-size: 14px;
+    line-height: 1.6;
 }
 
-.calculator-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 270px;
-    gap: 18px;
-    align-items: start;
+.identity {
+    font-size: 13px !important;
+    margin-top: 7px;
 }
 
 .calculator {
     background: white;
-    padding: 22px;
-    border-radius: 18px;
-    box-shadow: 0 5px 25px rgba(0,0,0,.07);
+    border: 1px solid #dadce0;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 2px 8px rgba(60,64,67,.12);
 }
 
 .topbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
     margin-bottom: 15px;
+    gap: 10px;
 }
 
-.mode-buttons {
+.mode {
     display: flex;
     gap: 7px;
 }
 
-.mode-buttons button,
-.angle-button {
+.mode button, .angle button {
     border: none;
     padding: 9px 15px;
-    border-radius: 8px;
-    background: #eef2f7;
-    color: #475569;
+    border-radius: 20px;
+    background: #f1f3f4;
+    color: #3c4043;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
 }
 
-.mode-buttons button.active,
-.angle-button.active {
-    background: #2563eb;
-    color: white;
+.mode button.active,
+.angle button.active {
+    background: #d2e3fc;
+    color: #174ea6;
+}
+
+.angle {
+    display: flex;
+    gap: 5px;
 }
 
 .display {
-    background: #f8fafc;
-    border: 1px solid #dce3ec;
-    border-radius: 13px;
-    padding: 18px;
     min-height: 125px;
-    margin-bottom: 17px;
-    text-align: right;
+    border-bottom: 1px solid #dadce0;
+    margin-bottom: 15px;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
     overflow: hidden;
 }
 
-.display-label {
-    font-size: 12px;
-    color: #94a3b8;
-    text-align: left;
-    margin-bottom: 12px;
-}
-
 .expression {
-    color: #64748b;
-    min-height: 25px;
-    font-size: 16px;
+    color: #5f6368;
+    font-size: 19px;
+    min-height: 28px;
+    max-width: 100%;
     overflow-wrap: anywhere;
+    text-align: right;
 }
 
 .result {
-    font-size: clamp(27px, 5vw, 36px);
-    font-weight: bold;
+    font-size: 38px;
+    font-weight: 400;
     margin-top: 8px;
+    max-width: 100%;
     overflow-wrap: anywhere;
+    text-align: right;
 }
 
 .error {
-    color: #dc2626;
-    font-size: 15px;
+    color: #d93025;
+    font-size: 14px;
+    margin-top: 7px;
 }
 
-.button-grid {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 9px;
+.memory {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
 }
 
-.button-grid.basic {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-button.key {
+.memory button {
     border: none;
-    border-radius: 9px;
-    min-height: 51px;
-    font-size: 16px;
-    font-weight: 600;
-    background: #f1f5f9;
-    color: #263449;
+    background: transparent;
+    color: #5f6368;
+    padding: 7px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.memory button:hover {
+    background: #f1f3f4;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+
+.key {
+    min-height: 53px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background: #f1f3f4;
+    color: #202124;
+    font-size: 17px;
     cursor: pointer;
     transition: .15s;
 }
 
-button.key:hover {
-    filter: brightness(.94);
+.key:hover {
+    background: #e8eaed;
 }
 
-button.key:active {
-    transform: scale(.96);
+.key.function {
+    background: #d2e3fc;
+    color: #174ea6;
+    font-size: 15px;
 }
 
-.function {
-    background: #e8efff !important;
-    color: #2457bb !important;
+.key.function:hover {
+    background: #c2dbff;
 }
 
-.operator {
-    background: #dbeafe !important;
-    color: #1d4ed8 !important;
+.key.operator {
+    background: #e8f0fe;
+    color: #174ea6;
+    font-size: 21px;
 }
 
-.danger {
-    background: #fee2e2 !important;
-    color: #b91c1c !important;
-}
-
-.equal {
-    background: #2563eb !important;
-    color: white !important;
-}
-
-.zero {
-    grid-column: span 2;
-}
-
-.memory-row {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 7px;
-    margin-bottom: 12px;
-}
-
-.memory-row button {
-    border: none;
-    border-radius: 7px;
-    padding: 10px 3px;
-    background: #f1f5f9;
-    color: #475569;
-    cursor: pointer;
-    font-size: 12px;
+.key.equal {
+    background: #4285f4;
+    color: white;
     font-weight: bold;
 }
 
-.memory-row button:hover {
-    background: #dbeafe;
+.key.equal:hover {
+    background: #1a73e8;
 }
 
-.basic-only,
-.scientific-only {
-    display: none;
+.key.clear {
+    color: #d93025;
 }
 
-.scientific-only.show,
-.basic-only.show {
-    display: contents;
+.history {
+    margin-top: 20px;
+    border-top: 1px solid #dadce0;
+    padding-top: 15px;
 }
 
-.side-panel {
-    background: white;
-    padding: 18px;
-    border-radius: 16px;
-    box-shadow: 0 5px 25px rgba(0,0,0,.06);
+.history-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-.side-panel h3 {
-    font-size: 17px;
-    margin-bottom: 12px;
+.history h3 {
+    font-size: 16px;
 }
 
-.history-list {
-    max-height: 320px;
-    overflow-y: auto;
+.history button {
+    border: none;
+    background: transparent;
+    color: #1a73e8;
+    cursor: pointer;
 }
 
 .history-item {
-    padding: 11px 8px;
-    border-bottom: 1px solid #e2e8f0;
+    padding: 9px 5px;
+    border-bottom: 1px solid #f1f3f4;
+    text-align: right;
     cursor: pointer;
 }
 
 .history-item:hover {
-    background: #f1f5f9;
+    background: #f8f9fa;
 }
 
 .history-expression {
-    color: #64748b;
-    font-size: 12px;
-    overflow-wrap: anywhere;
+    font-size: 13px;
+    color: #5f6368;
 }
 
 .history-result {
-    font-weight: bold;
-    margin-top: 5px;
-    overflow-wrap: anywhere;
-}
-
-.history-actions {
-    display: flex;
-    gap: 7px;
-    margin-top: 13px;
-}
-
-.history-actions button {
-    flex: 1;
-    padding: 9px;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-    background: #e8efff;
-    color: #2457bb;
-    font-weight: bold;
-}
-
-.empty-history {
-    font-size: 13px;
-    color: #94a3b8;
-    line-height: 1.6;
-}
-
-.info {
-    margin-top: 18px;
-    font-size: 12px;
-    line-height: 1.7;
-    color: #64748b;
+    font-size: 17px;
+    margin-top: 3px;
 }
 
 .footer {
     text-align: center;
+    color: #5f6368;
+    font-size: 12px;
     margin-top: 20px;
-    color: #64748b;
-    font-size: 13px;
 }
 
-@media(max-width: 750px) {
-    .calculator-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .side-panel {
-        order: 2;
-    }
-}
-
-@media(max-width: 420px) {
+@media(max-width: 520px) {
     body {
         padding: 15px 8px;
     }
 
     .calculator {
-        padding: 13px;
+        padding: 10px;
     }
 
-    .button-grid {
-        gap: 6px;
+    .keypad {
+        gap: 5px;
     }
 
-    button.key {
-        min-height: 44px;
-        font-size: 13px;
+    .key {
+        min-height: 48px;
+        font-size: 15px;
     }
 
-    .header h1 {
-        font-size: 22px;
+    .key.function {
+        font-size: 12px;
+    }
+
+    .result {
+        font-size: 30px;
+    }
+
+    .mode button, .angle button {
+        padding: 8px 10px;
+        font-size: 12px;
     }
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
     <div class="header">
-        <h1>Scientific Calculator Pro</h1>
-        <p>Interactive JavaScript Calculator | UTS Logika Algoritma</p>
+        <h1>Scientific Calculator</h1>
+        <p>UTS Project - Logika Algoritma</p>
+        <p>Perjalanan belajar Logika Algoritma bersama Pa Iin TA 20261</p>
+        <p class="identity">Eka Anisa - NIM. 262302018</p>
     </div>
 
-    <div class="calculator-layout">
+    <div class="calculator">
 
-        <main class="calculator">
-
-            <div class="topbar">
-                <div class="mode-buttons">
-                    <button id="basicMode" class="active" onclick="setMode('basic')">
-                        Basic
-                    </button>
-                    <button id="scientificMode" onclick="setMode('scientific')">
-                        Scientific
-                    </button>
-                </div>
-
-                <button class="angle-button active" id="angleButton"
-                        onclick="toggleAngle()">DEG</button>
+        <div class="topbar">
+            <div class="mode">
+                <button id="basicMode" class="active" onclick="setMode('basic')">Basic</button>
+                <button id="scientificMode" onclick="setMode('scientific')">Scientific</button>
             </div>
 
-            <div class="display">
-                <div class="display-label">CALCULATION DISPLAY</div>
-                <div class="expression" id="expression">0</div>
-                <div class="result" id="result">0</div>
+            <div class="angle">
+                <button id="deg" class="active" onclick="setAngle('DEG')">DEG</button>
+                <button id="rad" onclick="setAngle('RAD')">RAD</button>
             </div>
+        </div>
 
-            <div class="memory-row">
-                <button onclick="memoryClear()">MC</button>
-                <button onclick="memoryRecall()">MR</button>
-                <button onclick="memoryAdd()">M+</button>
-                <button onclick="memorySubtract()">M-</button>
-                <button onclick="memoryStore()">MS</button>
+        <div class="display">
+            <div class="expression" id="expression"></div>
+            <div class="result" id="result">0</div>
+            <div class="error" id="error"></div>
+        </div>
+
+        <div class="memory">
+            <button onclick="memoryClear()">MC</button>
+            <button onclick="memoryRecall()">MR</button>
+            <button onclick="memoryAdd()">M+</button>
+            <button onclick="memorySubtract()">M−</button>
+            <button onclick="memorySave()">MS</button>
+        </div>
+
+        <div class="keypad" id="keypad">
+
+            <button class="key function" onclick="insert('(')">(</button>
+            <button class="key function" onclick="insert(')')">)</button>
+            <button class="key function" onclick="insert('pi')">π</button>
+            <button class="key function" onclick="insert('e')">e</button>
+            <button class="key clear" onclick="clearAll()">AC</button>
+
+            <button class="key function" onclick="insert('sin(')">sin</button>
+            <button class="key function" onclick="insert('cos(')">cos</button>
+            <button class="key function" onclick="insert('tan(')">tan</button>
+            <button class="key function" onclick="insert('sqrt(')">√</button>
+            <button class="key clear" onclick="deleteLast()">DEL</button>
+
+            <button class="key function" onclick="insert('log(')">log</button>
+            <button class="key function" onclick="insert('ln(')">ln</button>
+            <button class="key function" onclick="insert('!')">x!</button>
+            <button class="key function" onclick="insert('^2')">x²</button>
+            <button class="key function" onclick="insert('^3')">x³</button>
+
+            <button class="key" onclick="insert('7')">7</button>
+            <button class="key" onclick="insert('8')">8</button>
+            <button class="key" onclick="insert('9')">9</button>
+            <button class="key operator" onclick="insert('/')">÷</button>
+            <button class="key operator" onclick="insert('%')">%</button>
+
+            <button class="key" onclick="insert('4')">4</button>
+            <button class="key" onclick="insert('5')">5</button>
+            <button class="key" onclick="insert('6')">6</button>
+            <button class="key operator" onclick="insert('*')">×</button>
+            <button class="key operator" onclick="insert('^')">xʸ</button>
+
+            <button class="key" onclick="insert('1')">1</button>
+            <button class="key" onclick="insert('2')">2</button>
+            <button class="key" onclick="insert('3')">3</button>
+            <button class="key operator" onclick="insert('-')">−</button>
+            <button class="key function" onclick="insert('ans')">Ans</button>
+
+            <button class="key" onclick="insert('0')">0</button>
+            <button class="key" onclick="insert('.')">.</button>
+            <button class="key function" onclick="insert('abs(')">|x|</button>
+            <button class="key operator" onclick="insert('+')">+</button>
+            <button class="key equal" onclick="calculate()">=</button>
+
+        </div>
+
+        <div class="history">
+            <div class="history-head">
+                <h3>Riwayat Perhitungan</h3>
+                <button onclick="clearHistory()">Hapus Riwayat</button>
             </div>
-
-            <div class="button-grid" id="buttonGrid">
-
-                <!-- Baris pertama -->
-                <button class="key function scientific-only show"
-                    data-insert="(">(</button>
-                <button class="key function scientific-only show"
-                    data-insert=")">)</button>
-                <button class="key function scientific-only show"
-                    data-insert="π">π</button>
-                <button class="key function scientific-only show"
-                    data-insert="e">e</button>
-                <button class="key danger" data-action="clear">AC</button>
-
-                <!-- Baris kedua -->
-                <button class="key function scientific-only show"
-                    data-action="second" id="secondButton">2nd</button>
-                <button class="key function scientific-only show"
-                    data-insert="sqrt(">√</button>
-                <button class="key function scientific-only show"
-                    data-insert="^2">x²</button>
-                <button class="key function scientific-only show"
-                    data-insert="^">xʸ</button>
-                <button class="key danger" data-action="backspace">DEL</button>
-
-                <!-- Baris ketiga -->
-                <button class="key function scientific-only show"
-                    data-function="sin">sin</button>
-                <button class="key function scientific-only show"
-                    data-function="cos">cos</button>
-                <button class="key function scientific-only show"
-                    data-function="tan">tan</button>
-                <button class="key function scientific-only show"
-                    data-insert="!">n!</button>
-                <button class="key operator" data-insert="/">÷</button>
-
-                <!-- Baris keempat -->
-                <button class="key function scientific-only show"
-                    data-function="log">log</button>
-                <button class="key function scientific-only show"
-                    data-function="ln">ln</button>
-                <button class="key function scientific-only show"
-                    data-function="abs">|x|</button>
-                <button class="key operator" data-insert="%">%</button>
-                <button class="key operator" data-insert="*">×</button>
-
-                <!-- Baris kelima -->
-                <button class="key" data-insert="7">7</button>
-                <button class="key" data-insert="8">8</button>
-                <button class="key" data-insert="9">9</button>
-                <button class="key function scientific-only show"
-                    data-insert="^3">x³</button>
-                <button class="key operator" data-insert="-">−</button>
-
-                <!-- Baris keenam -->
-                <button class="key" data-insert="4">4</button>
-                <button class="key" data-insert="5">5</button>
-                <button class="key" data-insert="6">6</button>
-                <button class="key function scientific-only show"
-                    data-insert="1/(">1/x</button>
-                <button class="key operator" data-insert="+">+</button>
-
-                <!-- Baris ketujuh -->
-                <button class="key" data-insert="1">1</button>
-                <button class="key" data-insert="2">2</button>
-                <button class="key" data-insert="3">3</button>
-                <button class="key function scientific-only show"
-                    data-function="exp">eˣ</button>
-                <button class="key function scientific-only show"
-                    data-function="tenpower">10ˣ</button>
-
-                <!-- Baris terakhir -->
-                <button class="key zero" data-insert="0">0</button>
-                <button class="key" data-insert=".">.</button>
-                <button class="key operator" data-insert="ans">Ans</button>
-                <button class="key equal" data-action="calculate">=</button>
-
+            <div id="historyList">
+                <p style="color:#80868b;font-size:13px;">Belum ada riwayat perhitungan.</p>
             </div>
-
-            <div class="info">
-                Keterangan: DEG = derajat, RAD = radian.
-                Tombol % digunakan untuk operasi modulus.
-                Gunakan tombol AC untuk menghapus semua input.
-            </div>
-
-        </main>
-
-        <aside class="side-panel">
-            <h3>Calculation History</h3>
-
-            <div class="history-list" id="historyList">
-                <p class="empty-history">Belum ada riwayat perhitungan.</p>
-            </div>
-
-            <div class="history-actions">
-                <button onclick="clearHistory()">Clear History</button>
-            </div>
-
-            <div class="info">
-                Klik salah satu riwayat untuk menggunakan kembali hasil
-                perhitungan sebelumnya.
-            </div>
-        </aside>
+        </div>
 
     </div>
 
@@ -471,256 +386,270 @@ button.key:active {
 </div>
 
 <script>
-const expressionDisplay = document.getElementById("expression");
-const resultDisplay = document.getElementById("result");
-const historyList = document.getElementById("historyList");
-
 let expression = "";
 let answer = 0;
 let memory = 0;
-let isRadians = false;
-let isSecond = false;
-let justCalculated = false;
+let angleMode = "DEG";
 let currentMode = "basic";
-let history = [];
+let historyData = [];
 
-// Mengubah tampilan mode kalkulator
+const expressionDisplay = document.getElementById("expression");
+const resultDisplay = document.getElementById("result");
+const errorDisplay = document.getElementById("error");
+
+function updateDisplay() {
+    expressionDisplay.textContent = expression
+        .replaceAll("*", "×")
+        .replaceAll("/", "÷")
+        .replaceAll("-", "−")
+        .replaceAll("pi", "π");
+
+    errorDisplay.textContent = "";
+}
+
+function insert(value) {
+    expression += value;
+    updateDisplay();
+}
+
+function clearAll() {
+    expression = "";
+    resultDisplay.textContent = "0";
+    updateDisplay();
+}
+
+function deleteLast() {
+    expression = expression.slice(0, -1);
+    updateDisplay();
+}
+
+function setAngle(mode) {
+    angleMode = mode;
+    document.getElementById("deg").classList.toggle("active", mode === "DEG");
+    document.getElementById("rad").classList.toggle("active", mode === "RAD");
+}
+
 function setMode(mode) {
     currentMode = mode;
 
-    document.getElementById("basicMode").classList.toggle(
-        "active", mode === "basic"
+    document.getElementById("basicMode").classList.toggle("active", mode === "basic");
+    document.getElementById("scientificMode").classList.toggle("active", mode === "scientific");
+
+    const scientificButtons = document.querySelectorAll(
+        ".key.function"
     );
 
-    document.getElementById("scientificMode").classList.toggle(
-        "active", mode === "scientific"
-    );
+    const scientificFunctions = [
+        "sin(", "cos(", "tan(", "sqrt(", "log(", "ln(",
+        "!", "^2", "^3", "pi", "e", "(", ")", "abs("
+    ];
 
-    document.querySelectorAll(".scientific-only").forEach(button => {
-        button.classList.toggle("show", mode === "scientific");
-    });
+    scientificButtons.forEach(button => {
+        const value = button.getAttribute("onclick");
+        const isScientific = scientificFunctions.some(fn =>
+            value && value.includes("'" + fn + "'")
+        );
 
-    document.querySelectorAll(".basic-only").forEach(button => {
-        button.classList.toggle("show", mode === "basic");
-    });
-}
-
-// Mengubah DEG dan RAD
-function toggleAngle() {
-    isRadians = !isRadians;
-
-    const button = document.getElementById("angleButton");
-
-    button.textContent = isRadians ? "RAD" : "DEG";
-    button.classList.toggle("active", !isRadians);
-}
-
-// Memperbarui layar
-function updateDisplay() {
-    expressionDisplay.textContent = expression || "0";
-}
-
-// Memasukkan angka dan operator
-function insertValue(value) {
-    if (justCalculated) {
-        const isOperator = ["+", "-", "*", "/", "%", "^", "!"].includes(value);
-
-        if (!isOperator) {
-            expression = "";
-        }
-
-        justCalculated = false;
-    }
-
-    expression += value;
-    updateDisplay();
-    resultDisplay.textContent = "0";
-    resultDisplay.classList.remove("error");
-}
-
-// Menghapus semua input
-function clearAll() {
-    expression = "";
-    justCalculated = false;
-
-    expressionDisplay.textContent = "0";
-    resultDisplay.textContent = "0";
-    resultDisplay.classList.remove("error");
-}
-
-// Menghapus satu karakter
-function backspace() {
-    expression = expression.slice(0, -1);
-    justCalculated = false;
-
-    updateDisplay();
-    resultDisplay.textContent = "0";
-    resultDisplay.classList.remove("error");
-}
-
-// Tombol fungsi ilmiah
-function insertFunction(name) {
-    let functionName = name;
-
-    if (isSecond) {
-        const inverse = {
-            sin: "asin",
-            cos: "acos",
-            tan: "atan",
-            log: "tenpower",
-            ln: "exp"
-        };
-
-        functionName = inverse[name] || name;
-        isSecond = false;
-        document.getElementById("secondButton").classList.remove("active");
-    }
-
-    const functionText = {
-        tenpower: "10^(",
-        exp: "exp(",
-        asin: "asin(",
-        acos: "acos(",
-        atan: "atan("
-    };
-
-    insertValue((functionText[functionName] || functionName + "("));
-}
-
-// Tombol 2nd
-function toggleSecond() {
-    isSecond = !isSecond;
-
-    document.getElementById("secondButton").classList.toggle("active", isSecond);
-
-    const labels = isSecond
-        ? {sin: "sin⁻¹", cos: "cos⁻¹", tan: "tan⁻¹", log: "10ˣ", ln: "eˣ"}
-        : {sin: "sin", cos: "cos", tan: "tan", log: "log", ln: "ln"};
-
-    document.querySelectorAll("[data-function]").forEach(button => {
-        button.textContent = labels[button.dataset.function] || button.dataset.function;
+        button.style.display =
+            mode === "basic" && isScientific ? "none" : "block";
     });
 }
 
-// Membuat token dari ekspresi
+/* TOKENIZER */
 function tokenize(input) {
-    const pattern = /\s*(asin|acos|atan|sqrt|sin|cos|tan|log|ln|abs|exp|10\^|ans|π|e|(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?|[+\-*/%^!()])/igy;
-
     const tokens = [];
+    const regex = /\s*([0-9]*\.?[0-9]+(?:e[+-]?[0-9]+)?|[a-zA-Z]+|[+\-*/%^!()]|\.)/gy;
+
     let position = 0;
 
     while (position < input.length) {
-        pattern.lastIndex = position;
+        regex.lastIndex = position;
+        const match = regex.exec(input);
 
-        const match = pattern.exec(input);
-
-        if (!match || match.index !== position) {
-            throw new Error("Input tidak valid");
+        if (!match) {
+            throw new Error("Input tidak valid.");
         }
 
         tokens.push(match[1]);
-        position = pattern.lastIndex;
+        position = regex.lastIndex;
     }
 
     return tokens;
 }
 
-// Mesin perhitungan matematika
+/* MATHEMATICAL PARSER */
 function evaluate(input) {
-    const tokens = tokenize(input);
+    let tokens = tokenize(input);
     let index = 0;
 
     function peek() {
         return tokens[index];
     }
 
-    function consume() {
+    function next() {
         return tokens[index++];
     }
 
-    function factorial(number) {
-        if (!Number.isInteger(number) || number < 0) {
-            throw new Error("Faktorial harus bilangan bulat nonnegatif");
+    function expect(value) {
+        if (next() !== value) {
+            throw new Error("Tanda kurung tidak sesuai.");
         }
+    }
 
-        if (number > 170) {
-            throw new Error("Hasil faktorial terlalu besar");
+    function factorial(n) {
+        if (!Number.isInteger(n) || n < 0 || n > 170) {
+            throw new Error("Faktorial hanya untuk bilangan bulat 0 sampai 170.");
         }
 
         let result = 1;
-
-        for (let i = 2; i <= number; i++) {
+        for (let i = 2; i <= n; i++) {
             result *= i;
         }
-
         return result;
     }
 
-    function parseExpression() {
-        let value = parseTerm();
+    function primary() {
+        let token = next();
 
-        while (peek() === "+" || peek() === "-") {
-            const operator = consume();
-            const right = parseTerm();
+        if (token === undefined) {
+            throw new Error("Masukkan angka terlebih dahulu.");
+        }
 
-            value = operator === "+"
-                ? value + right
-                : value - right;
+        if (token === "(") {
+            let value = addition();
+            expect(")");
+            return value;
+        }
+
+        if (!isNaN(Number(token)) && token !== "") {
+            return Number(token);
+        }
+
+        if (token === "pi") return Math.PI;
+        if (token === "e") return Math.E;
+        if (token === "ans") return answer;
+
+        const functions = [
+            "sin", "cos", "tan", "sqrt",
+            "log", "ln", "abs"
+        ];
+
+        if (functions.includes(token)) {
+            let value;
+
+            if (peek() === "(") {
+                next();
+                value = addition();
+                expect(")");
+            } else {
+                value = unary();
+            }
+
+            switch (token) {
+                case "sin":
+                    return Math.sin(angleMode === "DEG" ? value * Math.PI / 180 : value);
+
+                case "cos":
+                    return Math.cos(angleMode === "DEG" ? value * Math.PI / 180 : value);
+
+                case "tan":
+                    return Math.tan(angleMode === "DEG" ? value * Math.PI / 180 : value);
+
+                case "sqrt":
+                    if (value < 0) throw new Error("Akar negatif tidak valid.");
+                    return Math.sqrt(value);
+
+                case "log":
+                    if (value <= 0) throw new Error("Log harus lebih dari 0.");
+                    return Math.log10(value);
+
+                case "ln":
+                    if (value <= 0) throw new Error("Ln harus lebih dari 0.");
+                    return Math.log(value);
+
+                case "abs":
+                    return Math.abs(value);
+            }
+        }
+
+        throw new Error("Fungsi atau angka tidak dikenali.");
+    }
+
+    function postfix() {
+        let value = primary();
+
+        while (peek() === "!") {
+            next();
+            value = factorial(value);
         }
 
         return value;
     }
 
-    function startsPrimary(token) {
-        return token !== undefined &&
-            (token === "(" ||
-             token === "π" ||
-             token === "e" ||
-             token === "ans" ||
-             token === "sqrt" ||
-             token === "sin" ||
-             token === "cos" ||
-             token === "tan" ||
-             token === "asin" ||
-             token === "acos" ||
-             token === "atan" ||
-             token === "log" ||
-             token === "ln" ||
-             token === "abs" ||
-             token === "exp" ||
-             token === "10^" ||
-             /^[0-9.]/.test(token));
+    function power() {
+        let value = postfix();
+
+        if (peek() === "^") {
+            next();
+            value = Math.pow(value, unary());
+        }
+
+        return value;
     }
 
-    function parseTerm() {
-        let value = parseUnary();
+    function unary() {
+        if (peek() === "+") {
+            next();
+            return unary();
+        }
+
+        if (peek() === "-") {
+            next();
+            return -unary();
+        }
+
+        return power();
+    }
+
+    function startsPrimary(token) {
+        return token !== undefined &&
+            (
+                token === "(" ||
+                token === "pi" ||
+                token === "e" ||
+                token === "ans" ||
+                /^[0-9]/.test(token) ||
+                ["sin", "cos", "tan", "sqrt", "log", "ln", "abs"].includes(token)
+            );
+    }
+
+    function multiplication() {
+        let value = unary();
 
         while (true) {
-            const operator = peek();
+            if (peek() === "*") {
+                next();
+                value *= unary();
+            } else if (peek() === "/") {
+                next();
+                let divisor = unary();
 
-            if (["*", "/", "%"].includes(operator)) {
-                consume();
-
-                const right = parseUnary();
-
-                if (operator === "/") {
-                    if (right === 0) {
-                        throw new Error("Tidak bisa membagi dengan nol");
-                    }
-
-                    value /= right;
-                } else if (operator === "%") {
-                    if (right === 0) {
-                        throw new Error("Modulus dengan nol tidak valid");
-                    }
-
-                    value %= right;
-                } else {
-                    value *= right;
+                if (divisor === 0) {
+                    throw new Error("Tidak bisa membagi dengan nol.");
                 }
-            } else if (startsPrimary(operator)) {
-                // Perkalian otomatis, misalnya 2π atau 2(3+4)
-                value *= parseUnary();
+
+                value /= divisor;
+            } else if (peek() === "%") {
+                next();
+                let divisor = unary();
+
+                if (divisor === 0) {
+                    throw new Error("Modulus dengan nol tidak valid.");
+                }
+
+                value %= divisor;
+            } else if (startsPrimary(peek())) {
+                value *= unary();
             } else {
                 break;
             }
@@ -729,220 +658,123 @@ function evaluate(input) {
         return value;
     }
 
-    function parseUnary() {
-        if (peek() === "+") {
-            consume();
-            return parseUnary();
-        }
+    function addition() {
+        let value = multiplication();
 
-        if (peek() === "-") {
-            consume();
-            return -parseUnary();
-        }
+        while (peek() === "+" || peek() === "-") {
+            let operator = next();
+            let nextValue = multiplication();
 
-        return parsePower();
-    }
-
-    function parsePower() {
-        let value = parsePostfix();
-
-        if (peek() === "^") {
-            consume();
-            value = Math.pow(value, parseUnary());
+            value = operator === "+"
+                ? value + nextValue
+                : value - nextValue;
         }
 
         return value;
     }
 
-    function parsePostfix() {
-        let value = parsePrimary();
+    let result = addition();
 
-        while (peek() === "!") {
-            consume();
-            value = factorial(value);
-        }
-
-        return value;
-    }
-
-    function parsePrimary() {
-        const token = consume();
-
-        if (token === undefined) {
-            throw new Error("Ekspresi belum lengkap");
-        }
-
-        if (token === "(") {
-            const value = parseExpression();
-
-            if (consume() !== ")") {
-                throw new Error("Kurung belum lengkap");
-            }
-
-            return value;
-        }
-
-        if (token === "π") return Math.PI;
-        if (token === "e") return Math.E;
-        if (token === "ans") return answer;
-
-        if (/^(\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/i.test(token)) {
-            return Number(token);
-        }
-
-        if (token === "10^") {
-            return Math.pow(10, parseUnary());
-        }
-
-        const functions = [
-            "sin", "cos", "tan", "asin", "acos", "atan",
-            "sqrt", "log", "ln", "abs", "exp"
-        ];
-
-        if (functions.includes(token)) {
-            if (consume() !== "(") {
-                throw new Error("Fungsi harus menggunakan tanda kurung");
-            }
-
-            const value = parseExpression();
-
-            if (consume() !== ")") {
-                throw new Error("Kurung fungsi belum lengkap");
-            }
-
-            const angle = isRadians ? 1 : Math.PI / 180;
-
-            switch (token) {
-                case "sin":
-                    return Math.sin(value * angle);
-
-                case "cos":
-                    return Math.cos(value * angle);
-
-                case "tan":
-                    if (Math.abs(Math.cos(value * angle)) < 1e-12) {
-                        throw new Error("Hasil tan tidak terdefinisi");
-                    }
-                    return Math.tan(value * angle);
-
-                case "asin":
-                    if (value < -1 || value > 1) {
-                        throw new Error("Nilai asin harus antara -1 dan 1");
-                    }
-                    return Math.asin(value) / angle;
-
-                case "acos":
-                    if (value < -1 || value > 1) {
-                        throw new Error("Nilai acos harus antara -1 dan 1");
-                    }
-                    return Math.acos(value) / angle;
-
-                case "atan":
-                    return Math.atan(value) / angle;
-
-                case "sqrt":
-                    if (value < 0) {
-                        throw new Error("Akar bilangan negatif tidak valid");
-                    }
-                    return Math.sqrt(value);
-
-                case "log":
-                    if (value <= 0) {
-                        throw new Error("Log harus lebih besar dari nol");
-                    }
-                    return Math.log10(value);
-
-                case "ln":
-                    if (value <= 0) {
-                        throw new Error("Ln harus lebih besar dari nol");
-                    }
-                    return Math.log(value);
-
-                case "abs":
-                    return Math.abs(value);
-
-                case "exp":
-                    return Math.exp(value);
-            }
-        }
-
-        throw new Error("Angka atau operator tidak valid");
-    }
-
-    const result = parseExpression();
-
-    if (index !== tokens.length) {
-        throw new Error("Periksa kembali ekspresi");
+    if (index < tokens.length) {
+        throw new Error("Periksa kembali rumus yang dimasukkan.");
     }
 
     if (!Number.isFinite(result)) {
-        throw new Error("Hasil tidak valid");
+        throw new Error("Hasil perhitungan tidak valid.");
     }
 
     return result;
 }
 
-// Format angka hasil
+/* CALCULATION */
 function formatNumber(number) {
-    if (Math.abs(number) < 1e-12) number = 0;
+    if (Number.isInteger(number)) {
+        return number.toLocaleString("en-US");
+    }
 
     return Number(number.toPrecision(12)).toString();
 }
 
-// Menjalankan perhitungan
 function calculate() {
-    if (!expression) return;
-
-    const originalExpression = expression;
-
-    try {
-        const result = evaluate(expression);
-        const formatted = formatNumber(result);
-
-        answer = result;
-
-        addHistory(originalExpression, formatted);
-
-        expressionDisplay.textContent = originalExpression + " =";
-        resultDisplay.textContent = formatted;
-        resultDisplay.classList.remove("error");
-
-        expression = formatted;
-        justCalculated = true;
-
-    } catch (error) {
-        resultDisplay.textContent = "Error";
-        resultDisplay.classList.add("error");
-        expressionDisplay.textContent = error.message;
-
-        justCalculated = false;
-    }
-}
-
-// Riwayat perhitungan
-function addHistory(oldExpression, result) {
-    history.unshift({
-        expression: oldExpression,
-        result: result
-    });
-
-    if (history.length > 30) {
-        history.pop();
-    }
-
-    renderHistory();
-}
-
-function renderHistory() {
-    historyList.innerHTML = "";
-
-    if (history.length === 0) {
-        historyList.innerHTML =
-            '<p class="empty-history">Belum ada riwayat perhitungan.</p>';
+    if (expression.trim() === "") {
+        errorDisplay.textContent = "Masukkan perhitungan terlebih dahulu.";
         return;
     }
 
-    history.forEach(item => {
+    try {
+        const result = evaluate(expression);
+        answer = result;
+
+        const formatted = formatNumber(result);
+        resultDisplay.textContent = formatted;
+
+        historyData.unshift({
+            expression: expression,
+            result: formatted
+        });
+
+        historyData = historyData.slice(0, 30);
+        renderHistory();
+
+        expression = String(result);
+        updateDisplay();
+
+    } catch (error) {
+        errorDisplay.textContent = error.message;
+    }
+}
+
+/* MEMORY */
+function getCurrentValue() {
+    if (expression === "") return answer;
+    return evaluate(expression);
+}
+
+function memoryClear() {
+    memory = 0;
+}
+
+function memoryRecall() {
+    insert("(" + memory + ")");
+}
+
+function memoryAdd() {
+    try {
+        memory += getCurrentValue();
+    } catch {
+        errorDisplay.textContent = "Perhitungan memori tidak valid.";
+    }
+}
+
+function memorySubtract() {
+    try {
+        memory -= getCurrentValue();
+    } catch {
+        errorDisplay.textContent = "Perhitungan memori tidak valid.";
+    }
+}
+
+function memorySave() {
+    try {
+        memory = getCurrentValue();
+    } catch {
+        errorDisplay.textContent = "Perhitungan memori tidak valid.";
+    }
+}
+
+/* HISTORY */
+function renderHistory() {
+    const list = document.getElementById("historyList");
+
+    if (historyData.length === 0) {
+        list.innerHTML =
+            '<p style="color:#80868b;font-size:13px;">Belum ada riwayat perhitungan.</p>';
+        return;
+    }
+
+    list.innerHTML = "";
+
+    historyData.forEach(item => {
         const div = document.createElement("div");
         div.className = "history-item";
 
@@ -952,105 +784,42 @@ function renderHistory() {
 
         const res = document.createElement("div");
         res.className = "history-result";
-        res.textContent = "= " + item.result;
+        res.textContent = item.result;
 
         div.appendChild(exp);
         div.appendChild(res);
 
-        div.addEventListener("click", () => {
-            expression = item.result;
-            justCalculated = false;
+        div.onclick = function() {
+            expression = item.expression;
             updateDisplay();
-            resultDisplay.textContent = item.result;
-            resultDisplay.classList.remove("error");
-        });
+        };
 
-        historyList.appendChild(div);
+        list.appendChild(div);
     });
 }
 
 function clearHistory() {
-    history = [];
+    historyData = [];
     renderHistory();
 }
 
-// Fungsi memori kalkulator
-function memoryClear() {
-    memory = 0;
-}
+/* KEYBOARD SUPPORT */
+document.addEventListener("keydown", function(event) {
+    const key = event.key;
 
-function memoryRecall() {
-    insertValue("(" + formatNumber(memory) + ")");
-}
-
-function memoryAdd() {
-    try {
-        memory += evaluate(expression || "0");
-    } catch (error) {
-        resultDisplay.textContent = "Periksa ekspresi";
-    }
-}
-
-function memorySubtract() {
-    try {
-        memory -= evaluate(expression || "0");
-    } catch (error) {
-        resultDisplay.textContent = "Periksa ekspresi";
-    }
-}
-
-function memoryStore() {
-    try {
-        memory = evaluate(expression || "0");
-    } catch (error) {
-        resultDisplay.textContent = "Periksa ekspresi";
-    }
-}
-
-// Menghubungkan semua tombol
-document.querySelectorAll("[data-insert]").forEach(button => {
-    button.addEventListener("click", () => {
-        insertValue(button.dataset.insert);
-    });
-});
-
-document.querySelectorAll("[data-function]").forEach(button => {
-    button.addEventListener("click", () => {
-        insertFunction(button.dataset.function);
-    });
-});
-
-document.querySelectorAll("[data-action]").forEach(button => {
-    button.addEventListener("click", () => {
-        const action = button.dataset.action;
-
-        if (action === "clear") clearAll();
-        if (action === "backspace") backspace();
-        if (action === "calculate") calculate();
-        if (action === "second") toggleSecond();
-    });
-});
-
-// Dukungan keyboard
-document.addEventListener("keydown", event => {
-    if (event.ctrlKey || event.altKey || event.metaKey) return;
-
-    if (/^[0-9.]$/.test(event.key)) {
-        insertValue(event.key);
-    } else if (["+", "-", "*", "/", "%", "^", "(", ")", "!"].includes(event.key)) {
-        insertValue(event.key);
-    } else if (event.key === "Enter" || event.key === "=") {
+    if (/^[0-9.]$/.test(key) || ["+", "-", "*", "/", "%", "^", "(", ")", "!"].includes(key)) {
+        insert(key);
+    } else if (key === "Enter" || key === "=") {
         event.preventDefault();
         calculate();
-    } else if (event.key === "Backspace") {
-        backspace();
-    } else if (event.key === "Escape") {
+    } else if (key === "Backspace") {
+        deleteLast();
+    } else if (key === "Escape") {
         clearAll();
     }
 });
 
-// Tampilan awal
-setMode("basic");
+setMode("scientific");
 </script>
 
 </body>
