@@ -1,22 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UTS Logika Algoritma - Eka Anisa</title>
+    <title>UTS Logika Algoritma - Wahdan Sopwan Ramdhany</title>
 
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         :root {
-            --lavender: #E9DDF7;
-            --light: #F8F4FC;
-            --purple: #9B7BC0;
-            --purple-dark: #76558F;
-            --text: #49385E;
-            --white: #FFFDFF;
+            --black: #17191D;
+            --dark: #22252B;
+            --gray: #343942;
+            --silver: #B8BEC8;
+            --light: #F1F2F4;
+            --white: #FFFFFF;
+            --accent: #68788F;
         }
 
         * {
@@ -26,7 +26,7 @@
         body {
             margin: 0;
             background: var(--light);
-            color: var(--text);
+            color: var(--dark);
             font-family: 'Segoe UI', Arial, sans-serif;
         }
 
@@ -34,36 +34,37 @@
         .navbar {
             background: var(--white);
             padding: 16px 0;
-            border-bottom: 1px solid #eee5f7;
+            border-bottom: 1px solid #E2E4E8;
         }
 
         .navbar-brand {
-            color: var(--text);
-            font-weight: 750;
+            color: var(--black);
+            font-weight: 800;
             letter-spacing: 1px;
         }
 
         .navbar-brand:hover {
-            color: var(--purple-dark);
+            color: var(--accent);
         }
 
         .nav-info {
-            color: var(--purple-dark);
+            color: var(--accent);
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 650;
         }
 
         /* HEADER */
         .hero {
-            background: linear-gradient(135deg, #E9DDF7, #F6F0FC, #E5D4F5);
+            background: linear-gradient(135deg, #202329, #353B45, #252A32);
             padding: 65px 20px;
             text-align: center;
+            color: white;
         }
 
         .hero-label {
             display: inline-block;
-            background: var(--white);
-            color: var(--purple-dark);
+            background: #454C57;
+            color: #E6E9EE;
             padding: 8px 20px;
             border-radius: 30px;
             font-size: 12px;
@@ -75,14 +76,15 @@
         .hero h1 {
             font-size: clamp(28px, 5vw, 43px);
             font-weight: 800;
-            color: #49305F;
+            color: white;
         }
 
         .hero p {
-            color: #76558F;
+            color: #D0D4DB;
             font-size: 16px;
             margin: 12px auto 0;
             max-width: 650px;
+            line-height: 1.7;
         }
 
         /* MAIN */
@@ -97,12 +99,12 @@
         .section-title {
             font-size: 23px;
             font-weight: 750;
-            color: var(--text);
+            color: var(--black);
             margin-bottom: 7px;
         }
 
         .section-desc {
-            color: #927DA7;
+            color: #737B87;
             font-size: 14px;
             margin-bottom: 20px;
         }
@@ -110,14 +112,14 @@
         /* BIODATA */
         .profile-card {
             background: var(--white);
-            border: 1px solid #EDE3F6;
+            border: 1px solid #E1E4E8;
             border-radius: 18px;
             padding: 28px;
-            box-shadow: 0 5px 18px rgba(90, 65, 120, .07);
+            box-shadow: 0 5px 18px rgba(0, 0, 0, .05);
         }
 
         .profile-label {
-            color: #9B83B1;
+            color: #7D8795;
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -125,7 +127,7 @@
         }
 
         .profile-value {
-            color: var(--text);
+            color: var(--dark);
             font-weight: 650;
             margin-bottom: 18px;
         }
@@ -134,8 +136,8 @@
             width: 95px;
             height: 95px;
             border-radius: 50%;
-            background: #E9DDF7;
-            color: var(--purple-dark);
+            background: #E8EAEE;
+            color: #343942;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -145,8 +147,8 @@
 
         .student-badge {
             display: inline-block;
-            background: #EDE2F8;
-            color: var(--purple-dark);
+            background: #E8EAEE;
+            color: #343942;
             border-radius: 30px;
             padding: 8px 16px;
             font-size: 12px;
@@ -159,27 +161,27 @@
             height: 100%;
             padding: 22px;
             text-decoration: none;
-            color: var(--text);
+            color: var(--dark);
             background: var(--white);
-            border: 1px solid #EDE3F6;
+            border: 1px solid #E1E4E8;
             border-radius: 17px;
-            box-shadow: 0 5px 15px rgba(90, 65, 120, .06);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .04);
             transition: .25s;
         }
 
         .practice-card:hover {
             transform: translateY(-5px);
-            border-color: #CBB2E5;
-            box-shadow: 0 9px 22px rgba(90, 65, 120, .12);
-            color: var(--text);
+            border-color: #AEB6C2;
+            box-shadow: 0 9px 22px rgba(0, 0, 0, .10);
+            color: var(--dark);
         }
 
         .practice-number {
             width: 46px;
             height: 46px;
             border-radius: 50%;
-            background: #E9DDF7;
-            color: #62457E;
+            background: #E8EAEE;
+            color: #303640;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -193,15 +195,15 @@
         }
 
         .practice-card p {
-            color: #927DA7;
+            color: #7D8795;
             font-size: 13px;
             margin-bottom: 15px;
         }
 
         .open-label {
             display: inline-block;
-            background: #F0E7FA;
-            color: #76558F;
+            background: #E8EAEE;
+            color: #343942;
             padding: 7px 13px;
             border-radius: 20px;
             font-size: 12px;
@@ -213,14 +215,14 @@
             max-width: 650px;
             margin: auto;
             background: var(--white);
-            border: 1px solid #E6D9F2;
+            border: 1px solid #DDE0E5;
             border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 7px 20px rgba(90, 65, 120, .10);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, .08);
         }
 
         .calc-screen {
-            background: linear-gradient(135deg, #9875B8, #B69AD2);
+            background: linear-gradient(135deg, #252A32, #3C434E);
             padding: 20px;
             text-align: right;
         }
@@ -237,9 +239,9 @@
         }
 
         .mode-btn {
-            background: var(--white);
+            background: #E9EBEF;
             border: none;
-            color: var(--purple-dark);
+            color: #303640;
             border-radius: 20px;
             padding: 5px 14px;
             font-weight: 700;
@@ -249,8 +251,8 @@
             width: 100%;
             border: none;
             outline: none;
-            background: rgba(255,255,255,.85);
-            color: var(--text);
+            background: rgba(255,255,255,.95);
+            color: var(--dark);
             text-align: right;
             font-size: 27px;
             padding: 12px;
@@ -259,7 +261,7 @@
 
         #result {
             min-height: 25px;
-            color: white;
+            color: #E0E4EA;
             font-size: 14px;
             margin-top: 8px;
         }
@@ -272,51 +274,51 @@
         }
 
         .calc-buttons button {
-            border: 1px solid #E9DDF7;
+            border: 1px solid #E1E4E8;
             border-radius: 11px;
             padding: 13px 3px;
-            background: #F8F4FC;
-            color: var(--text);
+            background: #F1F2F4;
+            color: #292E36;
             font-size: 14px;
             font-weight: 650;
             transition: .2s;
         }
 
         .calc-buttons button:hover {
-            background: #E9DDF7;
+            background: #DDE1E7;
         }
 
         .calc-buttons .operator {
-            background: #F0E7FA;
-            color: #76558F;
+            background: #E3E6EB;
+            color: #303A48;
         }
 
         .calc-buttons .action {
-            background: #E5D5F3;
-            color: #634A7C;
+            background: #D3D8E0;
+            color: #252A32;
         }
 
         .calc-buttons .equal {
-            background: #9B7BC0;
+            background: #343B46;
             color: white;
-            border-color: #9B7BC0;
+            border-color: #343B46;
         }
 
         .calc-buttons .equal:hover {
-            background: #80649F;
+            background: #17191D;
         }
 
         /* FOOTER */
         footer {
-            background: #E9DDF7;
-            color: #76558F;
+            background: #22252B;
+            color: #D7DBE2;
             text-align: center;
             padding: 25px 15px;
             margin-top: 45px;
         }
 
         footer strong {
-            color: #49385E;
+            color: white;
         }
 
         /* RESPONSIVE */
@@ -347,8 +349,8 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="container">
-            <a class="navbar-brand" href="#">✦ EKA ANISA</a>
-            <span class="nav-info">UTS 2026 ✦</span>
+            <a class="navbar-brand" href="#">W. SOPWAN RAMDHANY</a>
+            <span class="nav-info">UTS 2026</span>
         </div>
     </nav>
 
@@ -390,10 +392,12 @@
 
                     <div class="col-md-5">
                         <div class="profile-label">Nama Lengkap</div>
-                        <div class="profile-value">Eka Anisa</div>
+                        <div class="profile-value">
+                            Wahdan Sopwan Ramdhany
+                        </div>
 
                         <div class="profile-label">NIM</div>
-                        <div class="profile-value">262302018</div>
+                        <div class="profile-value">262302017</div>
 
                         <div class="profile-label">Program Studi</div>
                         <div class="profile-value">
@@ -554,7 +558,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <strong>Eka Anisa - NIM. 262302018</strong>
+        <strong>Wahdan Sopwan Ramdhany - NIM. 262302017</strong>
         <div class="small mt-1">
             UTS Logika Algoritma | Ma'soem University
         </div>
@@ -609,7 +613,6 @@
         }
 
         function evaluateExpression(expression) {
-
             const tokens = [];
             const pattern =
                 /\s*([0-9]*\.?[0-9]+(?:e[+-]?\d+)?|[a-zA-Z]+|[+\-*/%^(),!])/gy;
@@ -676,6 +679,3 @@
             }
 
             function parseUnary() {
-                if (peek() === "+") {
-                    take();
-                    return parseUnary(
