@@ -1,22 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UTS Logika Algoritma - Wahdan Sopwan Ramdhany</title>
+    <title>UTS Logika Algoritma - Eka Anisa</title>
 
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         :root {
-            --black: #17191D;
-            --dark: #22252B;
-            --gray: #343942;
-            --silver: #B8BEC8;
-            --light: #F1F2F4;
-            --white: #FFFFFF;
-            --accent: #68788F;
+            --lavender: #E9DDF7;
+            --light: #F8F4FC;
+            --purple: #9B7BC0;
+            --purple-dark: #76558F;
+            --text: #49385E;
+            --white: #FFFDFF;
         }
 
         * {
@@ -26,7 +26,7 @@
         body {
             margin: 0;
             background: var(--light);
-            color: var(--dark);
+            color: var(--text);
             font-family: 'Segoe UI', Arial, sans-serif;
         }
 
@@ -34,37 +34,36 @@
         .navbar {
             background: var(--white);
             padding: 16px 0;
-            border-bottom: 1px solid #E2E4E8;
+            border-bottom: 1px solid #eee5f7;
         }
 
         .navbar-brand {
-            color: var(--black);
-            font-weight: 800;
+            color: var(--text);
+            font-weight: 750;
             letter-spacing: 1px;
         }
 
         .navbar-brand:hover {
-            color: var(--accent);
+            color: var(--purple-dark);
         }
 
         .nav-info {
-            color: var(--accent);
+            color: var(--purple-dark);
             font-size: 13px;
-            font-weight: 650;
+            font-weight: 600;
         }
 
         /* HEADER */
         .hero {
-            background: linear-gradient(135deg, #202329, #353B45, #252A32);
+            background: linear-gradient(135deg, #E9DDF7, #F6F0FC, #E5D4F5);
             padding: 65px 20px;
             text-align: center;
-            color: white;
         }
 
         .hero-label {
             display: inline-block;
-            background: #454C57;
-            color: #E6E9EE;
+            background: var(--white);
+            color: var(--purple-dark);
             padding: 8px 20px;
             border-radius: 30px;
             font-size: 12px;
@@ -76,15 +75,14 @@
         .hero h1 {
             font-size: clamp(28px, 5vw, 43px);
             font-weight: 800;
-            color: white;
+            color: #49305F;
         }
 
         .hero p {
-            color: #D0D4DB;
+            color: #76558F;
             font-size: 16px;
             margin: 12px auto 0;
             max-width: 650px;
-            line-height: 1.7;
         }
 
         /* MAIN */
@@ -99,12 +97,12 @@
         .section-title {
             font-size: 23px;
             font-weight: 750;
-            color: var(--black);
+            color: var(--text);
             margin-bottom: 7px;
         }
 
         .section-desc {
-            color: #737B87;
+            color: #927DA7;
             font-size: 14px;
             margin-bottom: 20px;
         }
@@ -112,14 +110,14 @@
         /* BIODATA */
         .profile-card {
             background: var(--white);
-            border: 1px solid #E1E4E8;
+            border: 1px solid #EDE3F6;
             border-radius: 18px;
             padding: 28px;
-            box-shadow: 0 5px 18px rgba(0, 0, 0, .05);
+            box-shadow: 0 5px 18px rgba(90, 65, 120, .07);
         }
 
         .profile-label {
-            color: #7D8795;
+            color: #9B83B1;
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -127,7 +125,7 @@
         }
 
         .profile-value {
-            color: var(--dark);
+            color: var(--text);
             font-weight: 650;
             margin-bottom: 18px;
         }
@@ -136,8 +134,8 @@
             width: 95px;
             height: 95px;
             border-radius: 50%;
-            background: #E8EAEE;
-            color: #343942;
+            background: #E9DDF7;
+            color: var(--purple-dark);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -147,8 +145,8 @@
 
         .student-badge {
             display: inline-block;
-            background: #E8EAEE;
-            color: #343942;
+            background: #EDE2F8;
+            color: var(--purple-dark);
             border-radius: 30px;
             padding: 8px 16px;
             font-size: 12px;
@@ -161,27 +159,27 @@
             height: 100%;
             padding: 22px;
             text-decoration: none;
-            color: var(--dark);
+            color: var(--text);
             background: var(--white);
-            border: 1px solid #E1E4E8;
+            border: 1px solid #EDE3F6;
             border-radius: 17px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, .04);
+            box-shadow: 0 5px 15px rgba(90, 65, 120, .06);
             transition: .25s;
         }
 
         .practice-card:hover {
             transform: translateY(-5px);
-            border-color: #AEB6C2;
-            box-shadow: 0 9px 22px rgba(0, 0, 0, .10);
-            color: var(--dark);
+            border-color: #CBB2E5;
+            box-shadow: 0 9px 22px rgba(90, 65, 120, .12);
+            color: var(--text);
         }
 
         .practice-number {
             width: 46px;
             height: 46px;
             border-radius: 50%;
-            background: #E8EAEE;
-            color: #303640;
+            background: #E9DDF7;
+            color: #62457E;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -195,15 +193,15 @@
         }
 
         .practice-card p {
-            color: #7D8795;
+            color: #927DA7;
             font-size: 13px;
             margin-bottom: 15px;
         }
 
         .open-label {
             display: inline-block;
-            background: #E8EAEE;
-            color: #343942;
+            background: #F0E7FA;
+            color: #76558F;
             padding: 7px 13px;
             border-radius: 20px;
             font-size: 12px;
@@ -215,14 +213,14 @@
             max-width: 650px;
             margin: auto;
             background: var(--white);
-            border: 1px solid #DDE0E5;
+            border: 1px solid #E6D9F2;
             border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 7px 20px rgba(0, 0, 0, .08);
+            box-shadow: 0 7px 20px rgba(90, 65, 120, .10);
         }
 
         .calc-screen {
-            background: linear-gradient(135deg, #252A32, #3C434E);
+            background: linear-gradient(135deg, #9875B8, #B69AD2);
             padding: 20px;
             text-align: right;
         }
@@ -239,9 +237,9 @@
         }
 
         .mode-btn {
-            background: #E9EBEF;
+            background: var(--white);
             border: none;
-            color: #303640;
+            color: var(--purple-dark);
             border-radius: 20px;
             padding: 5px 14px;
             font-weight: 700;
@@ -251,8 +249,8 @@
             width: 100%;
             border: none;
             outline: none;
-            background: rgba(255,255,255,.95);
-            color: var(--dark);
+            background: rgba(255,255,255,.85);
+            color: var(--text);
             text-align: right;
             font-size: 27px;
             padding: 12px;
@@ -261,7 +259,7 @@
 
         #result {
             min-height: 25px;
-            color: #E0E4EA;
+            color: white;
             font-size: 14px;
             margin-top: 8px;
         }
@@ -274,51 +272,51 @@
         }
 
         .calc-buttons button {
-            border: 1px solid #E1E4E8;
+            border: 1px solid #E9DDF7;
             border-radius: 11px;
             padding: 13px 3px;
-            background: #F1F2F4;
-            color: #292E36;
+            background: #F8F4FC;
+            color: var(--text);
             font-size: 14px;
             font-weight: 650;
             transition: .2s;
         }
 
         .calc-buttons button:hover {
-            background: #DDE1E7;
+            background: #E9DDF7;
         }
 
         .calc-buttons .operator {
-            background: #E3E6EB;
-            color: #303A48;
+            background: #F0E7FA;
+            color: #76558F;
         }
 
         .calc-buttons .action {
-            background: #D3D8E0;
-            color: #252A32;
+            background: #E5D5F3;
+            color: #634A7C;
         }
 
         .calc-buttons .equal {
-            background: #343B46;
+            background: #9B7BC0;
             color: white;
-            border-color: #343B46;
+            border-color: #9B7BC0;
         }
 
         .calc-buttons .equal:hover {
-            background: #17191D;
+            background: #80649F;
         }
 
         /* FOOTER */
         footer {
-            background: #22252B;
-            color: #D7DBE2;
+            background: #E9DDF7;
+            color: #76558F;
             text-align: center;
             padding: 25px 15px;
             margin-top: 45px;
         }
 
         footer strong {
-            color: white;
+            color: #49385E;
         }
 
         /* RESPONSIVE */
@@ -349,8 +347,8 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="container">
-            <a class="navbar-brand" href="#">W. SOPWAN RAMDHANY</a>
-            <span class="nav-info">UTS 2026</span>
+            <a class="navbar-brand" href="#">✦ EKA ANISA</a>
+            <span class="nav-info">UTS 2026 ✦</span>
         </div>
     </nav>
 
@@ -392,12 +390,10 @@
 
                     <div class="col-md-5">
                         <div class="profile-label">Nama Lengkap</div>
-                        <div class="profile-value">
-                            Wahdan Sopwan Ramdhany
-                        </div>
+                        <div class="profile-value">Eka Anisa</div>
 
                         <div class="profile-label">NIM</div>
-                        <div class="profile-value">262302017</div>
+                        <div class="profile-value">262302018</div>
 
                         <div class="profile-label">Program Studi</div>
                         <div class="profile-value">
@@ -558,7 +554,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <strong>Wahdan Sopwan Ramdhany - NIM. 262302017</strong>
+        <strong>Eka Anisa - NIM. 262302018</strong>
         <div class="small mt-1">
             UTS Logika Algoritma | Ma'soem University
         </div>
@@ -613,6 +609,7 @@
         }
 
         function evaluateExpression(expression) {
+
             const tokens = [];
             const pattern =
                 /\s*([0-9]*\.?[0-9]+(?:e[+-]?\d+)?|[a-zA-Z]+|[+\-*/%^(),!])/gy;
@@ -679,3 +676,168 @@
             }
 
             function parseUnary() {
+                if (peek() === "+") {
+                    take();
+                    return parseUnary();
+                }
+
+                if (peek() === "-") {
+                    take();
+                    return -parseUnary();
+                }
+
+                return parsePower();
+            }
+
+            function parsePower() {
+                let value = parsePostfix();
+
+                if (peek() === "^") {
+                    take();
+                    value = Math.pow(value, parseUnary());
+                }
+
+                return value;
+            }
+
+            function parsePostfix() {
+                let value = parsePrimary();
+
+                while (peek() === "!") {
+                    take();
+                    value = factorial(value);
+                }
+
+                return value;
+            }
+
+            function parsePrimary() {
+                const token = take();
+
+                if (token === undefined) {
+                    throw new Error("Ekspresi belum lengkap.");
+                }
+
+                if (token === "(") {
+                    const value = parseExpression();
+
+                    if (take() !== ")") {
+                        throw new Error("Kurung belum lengkap.");
+                    }
+
+                    return value;
+                }
+
+                if (!isNaN(Number(token))) {
+                    return Number(token);
+                }
+
+                if (token === "pi") return Math.PI;
+                if (token === "e") return Math.E;
+
+                const functions = [
+                    "sin", "cos", "tan", "sqrt", "log", "ln"
+                ];
+
+                if (functions.includes(token)) {
+
+                    if (take() !== "(") {
+                        throw new Error(
+                            "Gunakan tanda kurung pada fungsi."
+                        );
+                    }
+
+                    const value = parseExpression();
+
+                    if (take() !== ")") {
+                        throw new Error("Kurung fungsi belum lengkap.");
+                    }
+
+                    if (token === "sqrt") {
+                        if (value < 0) {
+                            throw new Error("Akar tidak boleh negatif.");
+                        }
+
+                        return Math.sqrt(value);
+                    }
+
+                    if (token === "log") {
+                        if (value <= 0) {
+                            throw new Error("Log harus lebih dari nol.");
+                        }
+
+                        return Math.log10(value);
+                    }
+
+                    if (token === "ln") {
+                        if (value <= 0) {
+                            throw new Error("Ln harus lebih dari nol.");
+                        }
+
+                        return Math.log(value);
+                    }
+
+                    const angle = isDegree
+                        ? value * Math.PI / 180
+                        : value;
+
+                    if (token === "sin") return Math.sin(angle);
+                    if (token === "cos") return Math.cos(angle);
+
+                    if (token === "tan") {
+                        if (Math.abs(Math.cos(angle)) < 1e-12) {
+                            throw new Error("Nilai tan tidak terdefinisi.");
+                        }
+
+                        return Math.tan(angle);
+                    }
+                }
+
+                throw new Error("Input tidak dikenali.");
+            }
+
+            if (tokens.length === 0) {
+                throw new Error("Masukkan angka terlebih dahulu.");
+            }
+
+            const answer = parseExpression();
+
+            if (index !== tokens.length) {
+                throw new Error("Periksa kembali ekspresi.");
+            }
+
+            if (!Number.isFinite(answer)) {
+                throw new Error("Hasil tidak valid.");
+            }
+
+            return answer;
+        }
+
+        function calculate() {
+            try {
+                const answer = evaluateExpression(display.value);
+                const rounded = Number(answer.toPrecision(12));
+
+                result.textContent = "= " + rounded;
+
+            } catch (error) {
+                result.textContent = error.message;
+            }
+        }
+
+        display.addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+                event.preventDefault();
+                calculate();
+            }
+
+            if (event.key === "Escape") {
+                clearDisplay();
+            }
+
+        });
+    </script>
+
+</body>
+</html>
